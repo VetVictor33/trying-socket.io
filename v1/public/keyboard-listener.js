@@ -1,17 +1,49 @@
 
-export function createKeyboardListener(document, state, socket) {
+export function createKeyboardListener(document) {
   const input = document.getElementById('messages-input')
-
   input.addEventListener('keypress', handleKeypress)
+
+  const state = {
+    username: '',
+    observers: [],
+  }
 
   function handleKeypress(event) {
     const keyPressed = event.key
 
+    const command = {
+      type: 'typing',
+      sender: state.username,
+    }
+    notifyAll(command)
+
     if (keyPressed === 'Enter') {
       if (input.value) {
-        socket.emit('chat message', { message: input.value, sender: socket.id })
+        command.type = 'chat message'
+        command.message = input.value
         input.value = ''
       }
+      notifyAll(command)
     }
   }
+
+  function subscribe(observerFunction) {
+    state.observers.push(observerFunction)
+  }
+
+  function notifyAll(command) {
+    for (const observerFunction of state.observers) {
+      observerFunction(command)
+    }
+  }
+
+  function registerUsername(username) {
+    state.username = username
+  }
+
+  return {
+    subscribe,
+    registerUsername
+  }
+
 }

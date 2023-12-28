@@ -1,4 +1,4 @@
-import { createUserMessageBox } from "./createUserMessageBox.js"
+import { userMessageBox } from "./userMessageBox.js"
 
 export function messenger(document) {
   const state = {
@@ -14,12 +14,17 @@ export function messenger(document) {
   }
 
   function addMessage(message) {
-    createUserMessageBox(document, message.value, message.sender === state.currentUser ? 'Me' : message.sender)
+    userMessageBox(document).create(message.value, message.sender === state.currentUser ? 'Me' : message.sender)
+  }
+
+  function clearMessages() {
+    userMessageBox(document).clear()
   }
 
   return {
     start,
     state,
     addMessage,
+    clearMessages
   }
 }
