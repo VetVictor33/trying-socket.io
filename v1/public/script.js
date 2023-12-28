@@ -1,8 +1,8 @@
-import { createKeyboardListener } from "./keyboard-listener.js"
-import { messenger } from "./messenger.js"
-import { setOnline } from "./setOnline.js"
-import { setTyping } from "./setTyping.js"
-import { registerToggleConnectionListener } from "./toggleConnection.js"
+import { createKeyboardListener } from "./features/keyboard-listener.js"
+import { messenger } from "./features/messenger.js"
+import { setOnline } from "./features/setOnline.js"
+import { setTyping } from "./features/setTyping.js"
+import { registerToggleConnectionListener } from "./features/toggleConnection.js"
 
 const socket = io({
   auth: {

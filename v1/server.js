@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import express from 'express'
 import { Server } from 'socket.io';
 
-import { messenger } from './public/messenger.js';
+import { messenger } from './public/features/messenger.js';
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
