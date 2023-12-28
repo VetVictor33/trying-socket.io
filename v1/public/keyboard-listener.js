@@ -15,7 +15,6 @@ export function createKeyboardListener(document) {
       type: 'typing',
       sender: state.username,
     }
-    notifyAll(command)
 
     if (keyPressed === 'Enter') {
       if (input.value) {
@@ -23,12 +22,16 @@ export function createKeyboardListener(document) {
         command.message = input.value
         input.value = ''
       }
-      notifyAll(command)
     }
+    notifyAll(command)
   }
 
   function subscribe(observerFunction) {
     state.observers.push(observerFunction)
+  }
+
+  function unsubscribe() {
+    state.observers = []
   }
 
   function notifyAll(command) {
@@ -43,6 +46,7 @@ export function createKeyboardListener(document) {
 
   return {
     subscribe,
+    unsubscribe,
     registerUsername
   }
 

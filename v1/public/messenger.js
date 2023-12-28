@@ -8,6 +8,7 @@ export function messenger(document) {
   }
 
   function start() {
+    clearMessages()
     for (const message of state.messages) {
       addMessage(message)
     }
@@ -24,7 +25,6 @@ export function messenger(document) {
   return {
     start,
     state,
-    addMessage,
-    clearMessages
+    addMessage
   }
 }

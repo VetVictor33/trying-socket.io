@@ -2,6 +2,7 @@ import { createKeyboardListener } from "./keyboard-listener.js"
 import { messenger } from "./messenger.js"
 import { setOnline } from "./setOnline.js"
 import { setTyping } from "./setTyping.js"
+import { registerToggleConnectionListener } from "./toggleConnection.js"
 
 const socket = io({
   auth: {
@@ -11,22 +12,23 @@ const socket = io({
 
 const { start, state: localState, addMessage } = messenger(document)
 const keyboardListener = createKeyboardListener(document)
+registerToggleConnectionListener(document, socket)
 
 socket.on('connect', () => {
   socket.emit('first connection')
 
   socket.on('initial data', (serverState) => {
-
     localState.online = serverState.online
     localState.currentUser = serverState.currentUser
     localState.messages = [...serverState.messages]
 
     keyboardListener.registerUsername(serverState.currentUser)
-    keyboardListener.subscribe((command) => {
-      socket.emit(command.type, command)
-    })
     start()
   })
+})
+
+keyboardListener.subscribe((command) => {
+  socket.emit(command.type, command)
 })
 
 
