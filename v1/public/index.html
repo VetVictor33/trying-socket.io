@@ -4,66 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SendMe</title>
-  <style>
-    *{
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body{
-      height: 100vh;
-    }
-    main{
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 1rem;
-    }
-
-    .message-box{
-      border: 1px solid red;
-      padding: 0.5rem;
-    }
-
-    .message-box span {
-      font-style: italic;
-    }
-
-    .message-box p {
-      white-space: nowrap;
-    }
-
-    .me{
-      border: 1px solid blue;
-    }
-
-    #messages-field{
-      flex-grow: 1;
-      overflow-y: scroll;
-      border: 1px solid black;
-
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-
-      padding: 0.5rem;
-      font-size: 1.3rem;
-    }
-
-    
-    #messages-input{
-      padding: 0.5rem;
-      font-size: 1.5rem;
-    }
-    
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
     <h1>Mensagens</h1>
     <h3 id="online" >0 online</h3>
     <div id="messages-field"></div>
+    <div id="typing">
+      <span id="typing-message"></span><span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+    </div>
     <button id="toggle-btn">Disconnect</button>
     <input id="messages-input" type="text">
   </main>
