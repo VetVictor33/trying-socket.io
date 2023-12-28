@@ -34,6 +34,10 @@ io.on('connection', (socket) => {
     io.emit('chat message', { value: data.message, sender: data.sender }, state)
   })
 
+  socket.on('typing', (data) => {
+    io.emit('typing', data)
+  })
+
   socket.on('disconnect', () => {
     state.online--
     console.log(`--> Disconnected ${socket.id}`)
