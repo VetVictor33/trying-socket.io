@@ -4,13 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SendMe</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
     <h1>Mensagens</h1>
-    <hr>
-    <div id="messages" />
-    <input id="field" type="text">
+    <h3 id="online" >0 online</h3>
+    <div id="messages-field"></div>
+    <div id="typing">
+      <span id="typing-message"></span><span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+    </div>
+    <button id="toggle-btn">Disconnect</button>
+    <input id="messages-input" type="text">
   </main>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="./script.js"></script>
 </body>
 </html>

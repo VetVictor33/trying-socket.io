@@ -1,0 +1,80 @@
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  height: 100vh;
+}
+
+main{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.message-box{
+  border: 1px solid red;
+  padding: 0.5rem;
+}
+
+.message-box span {
+  font-style: italic;
+}
+
+.message-box p {
+  white-space: nowrap;
+}
+
+.me {
+  border: 1px solid blue;
+}
+
+#typing {
+  position: absolute;
+  bottom: 100px;
+  display: none;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.dot {
+  animation: dot-animation 1.5s infinite;
+  opacity: 0;
+  animation-delay: 0.5s;
+}
+
+@keyframes dot-animation {
+  0%, 20%, 80%, 100% {
+      opacity: 0;
+  }
+  40% {
+      opacity: 1;
+  }
+}
+
+#messages-field{
+  position: relative;
+  flex-grow: 1;
+  overflow-y: scroll;
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  padding: 0.5rem;
+  font-size: 1.3rem;
+}
+
+
+#messages-input{
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+
